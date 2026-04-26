@@ -20,6 +20,6 @@ git commit -m "$COMMIT_MSG"
 git push
 
 # Write version file
-echo "Latest Build: $DATE" > src/version.txt
+echo "Latest Build: $DATE - Commit: $COMMIT_MSG" > src/version.txt
 
 echo "Done. version.txt updated."

@@ -14,6 +14,7 @@ const FILES = {
   /* JAVASCRIPT FILES - No need to put them in choronical order*/
   "/src/core/core.js": null,
   "/src/core/errorCatcher.js": null,
+  "/src/core/UpdateManager.js": null,
   "/src/core/loader": null,
   "/src/main.js": null,
   "/src/config.js": null,
