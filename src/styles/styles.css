@@ -202,10 +202,14 @@ button:hover {
 }
 
 #Credits .credits {
-    background: url(/src/assets/textures/important/GUI.png) !important;
+    background: url(/src/assets/textures/important/GUI.png);
+    background-size: 100% 100%;
     height: 512px;
     width: 512px;
     justify-self: center;
+    box-sizing: border-box;
+    padding: 40px 40px 100px 40px;
+    overflow-y: auto;
 }
 
 #Credits .credits-text {

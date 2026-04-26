@@ -1,1 +1,1 @@
-v..1
+vBUILD: 2026-04-26 02:25:00 | VERSION: v..1 | CC: 12 | BCA: Haydyn | FC: 18 | MSG: Checking if buidle.sh is messed up

@@ -9,7 +9,7 @@ fi
 COMMIT_MSG="$1"
 
 # Get current date/time
-DATE=$(date "+%Y-%m-%d %H:%M:%S")
+DATE=$(date "+%Y-%m-%d")
 
 # Ensure src folder exists
 mkdir -p src
