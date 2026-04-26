@@ -19,8 +19,9 @@ git commit -m "$COMMIT_MSG"
 git push
 
 COMMIT_COUNT=$(git rev-list --count HEAD)
+AUTHOR=$(git log -1 --pretty=format:'%an')
 
 # Write version file
-echo "Latest Build: $DATE (CST) - Commit: $COMMIT_MSG - COMMITS: $COMMIT_COUNT" > src/version.txt
+echo "BUILD: $DATE (CST) | COMMIT: $COMMIT_MSG | COMMIT COUNT: $COMMIT_COUNT | LATEST COMMIT AUTHOR" > src/version.txt
 
 echo "Done. version.txt updated."
