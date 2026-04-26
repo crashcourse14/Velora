@@ -1,1 +1,1 @@
-vBUILD: 2026-04-26 02:25:00 | VERSION: v..1 | CC: 12 | BCA: Haydyn | FC: 18 | MSG: Checking if buidle.sh is messed up
+BUILD: 2026-04-26 | VERSION: vBUILD: 2026-04-26 02:25:00 | VERSION: v..1 | CC: 12 | BCA: Haydyn | FC: 18 | MSG: Checking if buidle.sh is messed up | CC: 13 | BCA: Haydyn | FC: 18 | MSG: Last commit before bed
