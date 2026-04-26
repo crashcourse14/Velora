@@ -1,0 +1,25 @@
+{
+  "name": "velora",
+  "version": "1.0.0",
+  "description": "Velora - Multiplayer world exploration game",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "game",
+    "multiplayer",
+    "world",
+    "exploration"
+  ],
+  "author": "",
+  "license": "MIT"
+}

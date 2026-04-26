@@ -8,7 +8,7 @@ export function createNewWorld() {
 
         settings: {
             isPaused: false,
-            isServer: false,
+            isServer: true,
             creative: false,
             cheats: false,
             difficulty: 1
@@ -20,6 +20,15 @@ export function createNewWorld() {
 
         data: {
             tiles: []
-        }
+        },
+
+        server: {
+            connected: false,
+            serverUrl: "ws://localhost:3000",
+            playerId: null,
+            socket: null
+        },
+
+        players: new Map()
     };
 }

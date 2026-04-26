@@ -4,6 +4,7 @@ const FILES = {
   "/src/assets/textures/important/background.png": null,
   "/src/assets/textures/important/logo.png": null,
   "/src/assets/textures/important/stoat.png": null,
+  "/src/assets/textures/tiles/trees.png": null,
   "/src/assets/audio/MainMenu.mp3": null,
   "/src/assets/audio/MainMenu2.mp3": null,
   "/src/assets/sounds/button.mp3": null,
@@ -30,6 +31,9 @@ const FILES = {
   "/src/styles/styles.css": null,
 };
 
+// Asset cache for images
+const imageCache = {};
+
 async function loadFile(path) {
   const startTime = performance.now();
   const response = await fetch(path);
@@ -37,10 +41,33 @@ async function loadFile(path) {
     throw new Error(`Failed to load ${path}: ${response.status} ${response.statusText}`);
   }
 
-  const data = await response.arrayBuffer();
+  let data;
+  let size;
+  
+  // Load images and cache them
+  if (path.endsWith('.png') || path.endsWith('.jpg')) {
+    const blob = await response.blob();
+    const img = new Image();
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = URL.createObjectURL(blob);
+    });
+    imageCache[path] = img;
+    size = blob.size;
+    data = new Uint8Array(size);
+  } else {
+    data = await response.arrayBuffer();
+    size = data.byteLength;
+  }
+  
   const loadTime = Math.round(performance.now() - startTime);
   console.log(`[Loader] Loaded: ${path}`);
-  return { path, loadTime, size: data.byteLength };
+  return { path, loadTime, size };
+}
+
+export function getImage(path) {
+  return imageCache[path];
 }
 
 export function showScreen(id) {

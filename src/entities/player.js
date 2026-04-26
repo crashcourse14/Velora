@@ -4,7 +4,7 @@ import { camera, updateCamera } from "../render/camera.js";
 export const player = {
     x: 5,
     y: 5,
-    speed: 0.1
+    speed: 0.5
 };
 
 export function isSolid(x, y, world) {
@@ -27,4 +27,13 @@ export function update(keys, world, canvas) {
     if (!isSolid(player.x, nextY, world)) player.y = nextY;
 
     updateCamera(player, world, canvas);
+
+    // Sync movement with server
+    if (world.server && world.server.connected && world.server.socket) {
+        world.server.socket.send(JSON.stringify({
+            type: 'playerMove',
+            x: Math.floor(player.x),
+            y: Math.floor(player.y)
+        }));
+    }
 }

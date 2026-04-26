@@ -29,6 +29,70 @@ function startGameLoop() {
     requestAnimationFrame(loop);
 }
 
+function connectToServer(world) {
+    try {
+        const socket = new WebSocket(world.server.serverUrl);
+        
+        socket.onopen = () => {
+            console.log("[Game] Connected to multiplayer server");
+            world.server.connected = true;
+            world.server.socket = socket;
+        };
+        
+        socket.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            handleServerMessage(world, message);
+        };
+        
+        socket.onerror = (error) => {
+            console.warn("[Game] Server connection error - running in offline mode", error);
+            world.server.connected = false;
+        };
+        
+        socket.onclose = () => {
+            console.log("[Game] Disconnected from server");
+            world.server.connected = false;
+        };
+    } catch (error) {
+        console.warn("[Game] Failed to connect to server - running offline", error);
+        world.server.connected = false;
+    }
+}
+
+function handleServerMessage(world, message) {
+    switch (message.type) {
+        case 'welcome':
+            world.server.playerId = message.playerId;
+            console.log(`[Game] Player ID assigned: ${message.playerId}`);
+            break;
+            
+        case 'playerJoined':
+            console.log(`[Game] Player joined: ${message.playerId}`);
+            break;
+            
+        case 'playerLeft':
+            world.players.delete(message.playerId);
+            console.log(`[Game] Player left: ${message.playerId}`);
+            break;
+            
+        case 'playerMoved':
+            if (message.playerId !== world.server.playerId) {
+                world.players.set(message.playerId, {
+                    id: message.playerId,
+                    x: message.x,
+                    y: message.y
+                });
+            }
+            break;
+            
+        case 'tileChanged':
+            if (world.data.tiles[message.y]) {
+                world.data.tiles[message.y][message.x] = message.tileId;
+            }
+            break;
+    }
+}
+
 export function GenerateNewWorld() {
     showScreen("GameGUI");
 
@@ -37,6 +101,9 @@ export function GenerateNewWorld() {
 
     player.x = state.world.playerSpawn.x;
     player.y = state.world.playerSpawn.y;
+
+    // Connect to multiplayer server
+    connectToServer(state.world);
 
     startGameLoop();
     console.log("[Game] World generated and game loop started.");
