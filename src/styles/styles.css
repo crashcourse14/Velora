@@ -218,6 +218,103 @@ button:disabled:hover {
 
 #MainMenu .button-container .main-buttons {
     width: 256px;
+}
+
+
+#Settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 420px;
+    padding: 0 20px;
+}
+
+.setting-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.setting-row label {
+    font-size: 18px;
+    color: white;
+    text-align: left;
+}
+
+.slider-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#musicVolumeValue {
+    min-width: 54px;
+    text-align: right;
+    font-size: 16px;
+}
+
+.settings-slider {
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(20, 20, 20, 0.5);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.settings-slider:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.settings-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.settings-slider::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(20, 20, 20, 0.5);
+}
+
+.settings-slider:hover::-webkit-slider-runnable-track {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.settings-slider::-moz-range-track {
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(20, 20, 20, 0.5);
+}
+
+.settings-slider:hover::-moz-range-track {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.settings-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid black;
+    cursor: pointer;
     height: 32px;
 }
 

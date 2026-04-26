@@ -21,6 +21,7 @@
             <div id="bg"></div>
             <center>
                 <h1 class="title">Velora</h1>
+                <h3>(Beta)</h3>
             </center>
                  
             <div class="button-container">
@@ -28,6 +29,7 @@
                 <button class="main-buttons" disabled>Multiplayer</button>
                 <button class="main-buttons" onclick="showScreen('Settings')">Settings</button>
                 <button class="main-buttons" onclick="showScreen('Credits')">Credits</button>
+                <button class="main-buttons" onclick="window.open('https://stt.gg/Pk3sgqE2')">External Links</button>
             </div>
             <span id="updateText">Fetching Update Version...</span>
         </div>
@@ -62,9 +64,17 @@
             <center>
                 <h1 class="title">Settings</h1>
             </center>
+            <div class="settings-content">
+                <div class="setting-row">
+                    <label for="musicVolumeSlider">Main Music Volume</label>
+                    <div class="slider-row">
+                        <input id="musicVolumeSlider" class="settings-slider" type="range" min="0" max="1" step="0.01">
+                        <span id="musicVolumeValue">100%</span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="screen hidden" id="CreateNewWorld">
-            <button id="errorBtn" onclick="openLogWindow()">Debug Window</button>
             <button class="backButton" onclick="showScreen('MainMenu')">Back</button>
             <center>
                 <h1 class="title">Create New World</h1>
@@ -82,6 +92,6 @@
     <script>
         setTimeout(() => {
             document.getElementById("loadingText").innerText = "Loading... (The game has been loading for longer than expected, maybe the game crashed?)"
-        }, 5000);
+        }, 10000);
     </script>
 </html>

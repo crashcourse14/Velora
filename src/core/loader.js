@@ -3,7 +3,9 @@ const FILES = {
 
   "/src/assets/textures/important/background.png": null,
   "/src/assets/textures/important/logo.png": null,
+  "/src/assets/textures/important/stoat.png": null,
   "/src/assets/audio/MainMenu.mp3": null,
+  "/src/assets/audio/MainMenu2.mp3": null,
   "/src/assets/sounds/button.mp3": null,
 
   /* JAVASCRIPT FILES */
@@ -22,25 +24,23 @@ const FILES = {
   "/src/world/world.js": null,
   "/src/main.js": null,
   "/src/config.js": null,
+  "/src/state.js": null,
 
   /* CSS FILES */
   "/src/styles/styles.css": null,
 };
 
-// Helpers
+async function loadFile(path) {
+  const startTime = performance.now();
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${path}: ${response.status} ${response.statusText}`);
+  }
 
-function randomBetween(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function loadFile(path) {
-  return new Promise((resolve) => {
-    const delay = randomBetween(300, 600);
-    setTimeout(() => {
-      console.log(`[Loader] ✓ Loaded ${path} (${delay}ms)`);
-      resolve({ path, loadTime: delay });
-    }, delay);
-  });
+  const data = await response.arrayBuffer();
+  const loadTime = Math.round(performance.now() - startTime);
+  console.log(`[Loader] Loaded: ${path}`);
+  return { path, loadTime, size: data.byteLength };
 }
 
 export function showScreen(id) {
@@ -57,6 +57,8 @@ export function showScreen(id) {
 
   target.classList.remove("hidden");
   target.classList.add("active");
+
+  console.log(`[UI] Showing screen: ${id}`);
 }
 
 export async function loadGame() {
@@ -75,5 +77,6 @@ export async function loadGame() {
   const totalTime = Math.round(performance.now() - startTime);
   console.log(`[Loader] All ${totalFiles} file(s) loaded in ${totalTime}ms`);
 
+  showScreen("ClickToContinue");
   return { files: results, totalTime };
 }

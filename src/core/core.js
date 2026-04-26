@@ -24,8 +24,11 @@ export function initParallaxBg() {
     animate();
 }
 
+const mainMenuTracks = ["MainMenuMusicA", "MainMenuMusicB"];
+
 export function startMusicAndLoadMenu() {
     unlockAudio();
     showScreen("MainMenu");
-    playAudio("MainMenuMusic", true);
+    const chosenTrack = mainMenuTracks[Math.floor(Math.random() * mainMenuTracks.length)];
+    playAudio(chosenTrack, true);
 }
