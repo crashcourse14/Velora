@@ -21,8 +21,9 @@ git push
 COMMIT_COUNT=$(git rev-list --count HEAD)
 AUTHOR=$(git log -1 --pretty=format:'%an')
 FILE_COUNT=$(git ls-files | wc -l)
+BUILD_ID=$(uuidgen)
 
 # Write version file
-echo "BUILD: $DATE (CST) | COMMIT: $COMMIT_MSG | COMMIT COUNT: $COMMIT_COUNT | LATEST COMMIT AUTHOR: $AUTHOR | FILE COUNT: $FILE_COUNT " > src/version.txt
+echo "BUILD: $BUILD_ID - CC: $COMMIT_COUNT - LCA: $AUTHOR - FC: $FILE_COUNT " > src/version.txt
 
 echo "Done. version.txt updated."
