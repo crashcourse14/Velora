@@ -32,6 +32,6 @@ DATE=$(date "+%Y-%m-%d")
 
 
 
-echo "BUILD: $DATE | CC: $COMMIT_COUNT | BCA: $AUTHOR | FC: $FILE_COUNT | MSG: $COMMIT_MSG" > /src/version.txt
+echo "BUILD: $DATE | CC: $COMMIT_COUNT | BCA: $AUTHOR | FC: $FILE_COUNT | MSG: $COMMIT_MSG" > src/version.txt
 
 echo "Done. version.txt updated to $NEW_VERSION"
