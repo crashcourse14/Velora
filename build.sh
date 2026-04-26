@@ -11,15 +11,16 @@ COMMIT_MSG="$1"
 # Get current date/time
 DATE=$(date "+%Y-%m-%d %H:%M:%S")
 
-# Run git commands
+
 git init
 git add .
 git commit -m "$COMMIT_MSG"
 
-# Push (assumes remote already exists)
 git push
 
+COMMIT_COUNT=$(git rev-list --count HEAD)
+
 # Write version file
-echo "Latest Build: $DATE - Commit: $COMMIT_MSG" > src/version.txt
+echo "Latest Build: $DATE (CST) - Commit: $COMMIT_MSG - COMMITS: $COMMIT_COUNT" > src/version.txt
 
 echo "Done. version.txt updated."
