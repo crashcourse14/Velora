@@ -29,6 +29,13 @@ button:hover {
     transition: 0.5s;
 }
 
+.backButton {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 64px !important;
+    height: 32px !important;
+}
+
 /* hidden ALWAYS wins */
 .hidden {
     display: none !important;
@@ -149,7 +156,7 @@ button:hover {
     }
 }
 
-/* MAIN MENU */
+/* ==== MAIN MENU ==== */
 
 #MainMenu {
     background: url('/src/assets/textures/important/background.png');
@@ -181,5 +188,27 @@ button:hover {
     margin-left: 10px;
 }
 
+/* ==== CREDITS ====*/
 
+#Credits {
+    background: url('/src/assets/textures/important/background.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+#Credits .title {
+    font-size: 62px;
+}
+
+#Credits .credits {
+    background: url(/src/assets/textures/important/GUI.png) !important;
+    height: 512px;
+    width: 512px;
+    justify-self: center;
+}
+
+#Credits .credits-text {
+    margin-left: 5px;
+}
 

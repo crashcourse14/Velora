@@ -22,9 +22,36 @@
                 <button class="main-buttons">Create New World</button>
                 <button class="main-buttons" disabled>Multiplayer</button>
                 <button class="main-buttons">Settings</button>
-                <button class="main-buttons">Credits</button>
+                <button class="main-buttons" onclick="showScreen('Credits')">Credits</button>
             </div>
             <span id="updateText">Fetching Update Version...</span>
+        </div>
+
+        <div class="screen hidden" id="Credits">
+            <button class="backButton" onclick="showScreen('MainMenu')">Back</button>
+            <center>
+                <h1 class="title">Credits</h1>
+            </center>
+
+            <div class="credits">
+                <div class="credits-text">
+                    <h1>Game Owner</h1>
+                    <p>- Esovian. (Haydyn)</p>
+                    <br>
+                    <h1>Game Developers</h1>
+                    <p>- Esovian. (Haydyn)</p>
+                    <p>#To be added, fork the project, and send us a commit request.</p>
+                    <br>
+                    <h1>Game Development Software</h1>
+                    <p>Github Repository: https://github.com</p>
+                    <br>
+                    <h3>Help</h3>
+                    <p>CC stands for COMMIT COUNT</p>
+                    <p>BCA stands for BUILD COMMIT AUTHOR</p>
+                    <p>FC stands for FILE COUNT</p>
+                </div>
+            </div>
+            
         </div>
     </body>
     <script src="/src/core/core.js"></script>

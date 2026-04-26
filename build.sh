@@ -24,6 +24,6 @@ FILE_COUNT=$(git ls-files | wc -l)
 BUILD_ID=$(uuidgen)
 
 # Write version file
-echo "BUILD: $DATE - CC: $COMMIT_COUNT - LCA: $AUTHOR - FC: $FILE_COUNT " > src/version.txt
+echo "BUILD: $DATE - CC: $COMMIT_COUNT - BCA: $AUTHOR - FC: $FILE_COUNT " > src/version.txt
 
 echo "Done. version.txt updated."
