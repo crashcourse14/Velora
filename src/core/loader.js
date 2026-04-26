@@ -10,9 +10,12 @@ const FILES = {
 
   "/src/assets/textures/important/background.png": null,
   "/src/assets/textures/important/logo.png": null,
+  "/src/assets/audio/MainMenu.mp3": null,
+  "/src/assets/sound/button.mp3": null,
 
   /* JAVASCRIPT FILES - No need to put them in choronical order*/
   "/src/core/core.js": null,
+  "/src/core/AudioManager": null,
   "/src/core/errorCatcher.js": null,
   "/src/core/UpdateManager.js": null,
   "/src/core/loader": null,
@@ -72,6 +75,7 @@ function showScreen(id) {
 async function loadGame() {
   const paths = Object.keys(FILES);
   const totalFiles = paths.length;
+  loadAudio("MainMenuMusic", "/src/assets/audio/MainMenu.mp3");
 
   console.log(`[Loader] Starting game load — ${totalFiles} file(s)...`);
   const startTime = performance.now();
@@ -96,7 +100,7 @@ loadGame()
     console.log(`[Loader] Game ready! Total load time: ${totalTime}ms`);
 
     // UI SWITCH (single source of truth)
-    showScreen("MainMenu");
+    showScreen("ClickToContinue");
 
     console.log("[Loader] Switched to MainMenu");
   })

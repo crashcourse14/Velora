@@ -25,3 +25,11 @@ function animate() {
 }
 
 animate();
+
+
+function startMusicAndLoadMeunu() {
+    unlockAudio()
+    showScreen("MainMenu");
+      playAudio("MainMenuMusic", true);
+}
+

@@ -13,6 +13,11 @@
                 <p id="loadingText">Loading...</p>
             </div>
         </div>
+        <div class="screen hidden" id="ClickToContinue">
+            <center>
+                <button  onclick="startMusicAndLoadMeunu()">Cick To Continue</button>
+            </center>
+        </div>
         <div class="screen hidden" id="MainMenu">
             <div id="bg"></div>
             <center>
@@ -20,7 +25,7 @@
             </center>
                  
             <div class="button-container">
-                <button class="main-buttons">Create New World</button>
+                <button class="main-buttons" onclick="showScreen('CreateNewWorld')">Create New World</button>
                 <button class="main-buttons" disabled>Multiplayer</button>
                 <button class="main-buttons" onclick="showScreen('Settings')">Settings</button>
                 <button class="main-buttons" onclick="showScreen('Credits')">Credits</button>
@@ -59,7 +64,17 @@
                 <h1 class="title">Settings</h1>
             </center>
         </div>
+        <div class="screen hidden" id="CreateNewWorld">
+            <button class="backButton" onclick="showScreen('MainMenu')">Back</button>
+            <center>
+                <h1 class="title">Create New World</h1>
+            </center>
+            <div class="create-world-container">
+                <input type="text" id="worldNameInput" placeholder="World Name">
+            </div>
+        </div>
     </body>
+    <script src="/src/core/AudioManager.js"></script>
     <script src="/src/core/core.js"></script>
     <script src="/src/core/errorCatcher.js"></script>
     <script src="/src/core/loader.js"></script>

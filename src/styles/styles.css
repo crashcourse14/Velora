@@ -70,7 +70,7 @@ button:disabled:hover {
 }
 
 #loadingScreen {
-    background: url('/src/assets/textures/important/background.png') !important;
+    background: url('/src/assets/textures/important/background.gif') !important;
     background-size: cover !important;
     background-position: center !important;
     color: white;
@@ -167,8 +167,22 @@ button:disabled:hover {
     }
 }
 
-/* ==== MAIN MENU ==== */
+/* ==== CLICK TO CONTINUE ==== */
+#ClickToContinue {
+    background: url('/src/assets/textures/important/background.gif');
+    z-index: 5;
+    background-size: cover;
+    background-position: center;
 
+}
+
+#ClickToContinue button {
+    margin-top: 25%;
+}
+
+
+
+/* ==== MAIN MENU ==== */
 #MainMenu {
     /*background: url('/src/assets/textures/important/background.png');*/
     background-size: cover;
@@ -180,7 +194,7 @@ button:disabled:hover {
     position: fixed;
     inset: 0;
 
-    background: url('/src/assets/textures/important/background.png');
+    background: url('/src/assets/textures/important/background.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -212,9 +226,8 @@ button:disabled:hover {
 }
 
 /* ==== CREDITS ====*/
-
 #Credits {
-    background: url('/src/assets/textures/important/background.png');
+    background: url('/src/assets/textures/important/background.gif');
     z-index: 5;
     background-size: cover;
     background-position: center;
@@ -242,7 +255,7 @@ button:disabled:hover {
 
 /* ==== SETTINGS ==== */
 #Settings {
-    background: url('/src/assets/textures/important/background.png');
+    background: url('/src/assets/textures/important/background.gif');
     z-index: 5;
     background-size: cover;
     background-position: center;
@@ -250,5 +263,30 @@ button:disabled:hover {
 
 #Settings .title {
     font-size: 62px;
+}
+
+/* ==== CREATE NEW WORLD ====*/
+#CreateNewWorld {
+    background: url('/src/assets/textures/important/background.gif');
+    z-index: 5;
+    background-size: cover;
+    background-position: center;
+}
+
+#CreateNewWorld .title {
+    font-size: 62px;
+}
+
+#CreateNewWorld #worldNameInput {
+    background-color:  rgba(20, 20, 20, 0.5);
+    border: 1px solid black;
+    height: 32px;
+    width: 256px;
+    color: white;
+}
+
+#CreateNewWorld #worldNameInput::placeholder {
+    font-family: "Pixelify Sans", sans-serif;
+    color: white;
 }
 
