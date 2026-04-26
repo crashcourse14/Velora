@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="screen hidden" id="MainMenu">
+            <div id="bg"></div>
             <center>
                 <h1 class="title">Velora</h1>
             </center>
@@ -21,7 +22,7 @@
             <div class="button-container">
                 <button class="main-buttons">Create New World</button>
                 <button class="main-buttons" disabled>Multiplayer</button>
-                <button class="main-buttons">Settings</button>
+                <button class="main-buttons" onclick="showScreen('Settings')">Settings</button>
                 <button class="main-buttons" onclick="showScreen('Credits')">Credits</button>
             </div>
             <span id="updateText">Fetching Update Version...</span>
@@ -51,7 +52,12 @@
                     <p>FC stands for FILE COUNT</p>
                 </div>
             </div>
-            
+        </div>
+        <div class="screen hidden" id="Settings">
+            <button class="backButton" onclick="showScreen('MainMenu')">Back</button>
+            <center>
+                <h1 class="title">Settings</h1>
+            </center>
         </div>
     </body>
     <script src="/src/core/core.js"></script>
