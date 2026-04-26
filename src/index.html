@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="/src/styles/styles.css">
     </head>
     <body>
-        <!--<button id="errorBtn" onclick="showMainMenu()">Debug Window</button>-->
         <div class="screen active" id="loadingScreen">
             <div class="loadScreen-LoadingContainer">
                 <span class="loader"></span>
@@ -15,7 +14,7 @@
         </div>
         <div class="screen hidden" id="ClickToContinue">
             <center>
-                <button  onclick="startMusicAndLoadMeunu()">Cick To Continue</button>
+                <button  onclick="startMusicAndLoadMenu()">Click To Continue</button>
             </center>
         </div>
         <div class="screen hidden" id="MainMenu">
@@ -65,20 +64,24 @@
             </center>
         </div>
         <div class="screen hidden" id="CreateNewWorld">
+            <button id="errorBtn" onclick="openLogWindow()">Debug Window</button>
             <button class="backButton" onclick="showScreen('MainMenu')">Back</button>
             <center>
                 <h1 class="title">Create New World</h1>
             </center>
             <div class="create-world-container">
                 <input type="text" id="worldNameInput" placeholder="World Name">
+                <button onclick="GenerateNewWorld()">Create World</button>
             </div>
         </div>
+        <div class="screen hidden" id="GameGUI">
+            <canvas id="gameCanvas"></canvas>
+        </div>
     </body>
-    <script src="/src/core/AudioManager.js"></script>
-    <script src="/src/core/core.js"></script>
-    <script src="/src/core/errorCatcher.js"></script>
-    <script src="/src/core/loader.js"></script>
-    <script src="/src/main.js"></script>
-    <script src="/src/config.js"></script>
-    <script src="/src/core/UpdateManager.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        setTimeout(() => {
+            document.getElementById("loadingText").innerText = "Loading... (The game has been loading for longer than expected, maybe the game crashed?)"
+        }, 5000);
+    </script>
 </html>

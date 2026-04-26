@@ -1,31 +1,30 @@
-/**
- * loader.js
- * Simulates a game load sequence where load time scales with the number of src files.
- */
-
 const FILES = {
-
-  //This file should obviously exist or the game wouldn't load
   "/src/index.html": null,
 
   "/src/assets/textures/important/background.png": null,
   "/src/assets/textures/important/logo.png": null,
   "/src/assets/audio/MainMenu.mp3": null,
-  "/src/assets/sound/button.mp3": null,
+  "/src/assets/sounds/button.mp3": null,
 
-  /* JAVASCRIPT FILES - No need to put them in choronical order*/
+  /* JAVASCRIPT FILES */
   "/src/core/core.js": null,
-  "/src/core/AudioManager": null,
+  "/src/core/AudioManager.js": null,
   "/src/core/errorCatcher.js": null,
   "/src/core/UpdateManager.js": null,
-  "/src/core/loader": null,
+  "/src/core/loader.js": null,
+  "/src/core/game.js": null,
+  "/src/core/input.js": null,
+  "/src/entities/player.js": null,
+  "/src/render/camera.js": null,
+  "/src/render/renderer.js": null,
+  "/src/world/generator.js": null,
+  "/src/world/tiles.js": null,
+  "/src/world/world.js": null,
   "/src/main.js": null,
   "/src/config.js": null,
 
-  /* CSS FILES*/
-
+  /* CSS FILES */
   "/src/styles/styles.css": null,
-
 };
 
 // Helpers
@@ -35,13 +34,8 @@ function randomBetween(min, max) {
 }
 
 function loadFile(path) {
-  return new Promise((resolve, reject) => {
-    if (!path.startsWith("/src/")) {
-      return reject(new Error(`Invalid file path: "${path}" — must begin with /src/`));
-    }
-
+  return new Promise((resolve) => {
     const delay = randomBetween(300, 600);
-
     setTimeout(() => {
       console.log(`[Loader] ✓ Loaded ${path} (${delay}ms)`);
       resolve({ path, loadTime: delay });
@@ -49,12 +43,7 @@ function loadFile(path) {
   });
 }
 
-/*
-New screen system. 
-Cleans up boilerplate then from the last version of this bs
-*/
-
-function showScreen(id) {
+export function showScreen(id) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
     screen.classList.add("hidden");
@@ -70,18 +59,14 @@ function showScreen(id) {
   target.classList.add("active");
 }
 
-// Main game loader (Should probably be in main.js but who cares?)
-
-async function loadGame() {
+export async function loadGame() {
   const paths = Object.keys(FILES);
   const totalFiles = paths.length;
-  loadAudio("MainMenuMusic", "/src/assets/audio/MainMenu.mp3");
 
   console.log(`[Loader] Starting game load — ${totalFiles} file(s)...`);
   const startTime = performance.now();
 
   const results = [];
-
   for (const path of paths) {
     const result = await loadFile(path);
     results.push(result);
@@ -92,22 +77,3 @@ async function loadGame() {
 
   return { files: results, totalTime };
 }
-
-// Tis is where thy loader loads
-
-loadGame()
-  .then(({ files, totalTime }) => {
-    console.log(`[Loader] Game ready! Total load time: ${totalTime}ms`);
-
-    // UI SWITCH (single source of truth)
-    showScreen("ClickToContinue");
-
-    console.log("[Loader] Switched to MainMenu");
-  })
-  .catch((err) => {
-    console.error(`[Loader] Load failed — ${err.message}`);
-
-    // optional fallback UI
-    const loading = document.getElementById("loadingScreen");
-    if (loading) loading.innerText = "Load failed. Check console.";
-  });
