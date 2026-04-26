@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+body {
+    margin: 0;
+    color: white;
+    background-color: black;
+    font-family: "Pixelify Sans", sans-serif;
+    position: relative;
+}
+
+button {
+    background: url(/src/assets/textures/important/button.png) !important;
+    background-size: cover;
+    min-width: 256px;
+    min-height: 32px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: white !important;
+    transition: 0.5s;
+
+}
+
+button:hover {
+    background: url(/src/assets/textures/important/buttonHovered.png) !important;
+    background-size: cover;
+    min-width: 256px;
+    min-height: 32px;
+    font-family: "Pixelify Sans", sans-serif;
+    color: yellow !important;
+    transition: 0.5s;
+}
+
+/* hidden ALWAYS wins */
+.hidden {
+    display: none !important;
+}
+
+/* active ALWAYS visible */
+.active {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10 !important;
+}
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    background-color: black;
+}
+
+#loadingScreen {
+    background: url('/src/assets/textures/important/background.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white;
+    z-index: 4;
+}
+
+.loadScreen-LoadingContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorBtn {
+    z-index: 9999;
+    top: 0;
+    left: 0;
+}
+
+/* LOADING ICON */
+
+.loader {
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+}
+.loader:before,
+.loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+}
+.loader:after {
+    color: #f961ac;
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+}
+
+@keyframes rotateccw {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+    0%,
+    100% {
+        box-shadow: .2em 0px 0 0px currentcolor;
+    }
+    12% {
+        box-shadow: .2em .2em 0 0 currentcolor;
+    }
+    25% {
+        box-shadow: 0 .2em 0 0px currentcolor;
+    }
+    37% {
+        box-shadow: -.2em .2em 0 0 currentcolor;
+    }
+    50% {
+        box-shadow: -.2em 0 0 0 currentcolor;
+    }
+    62% {
+        box-shadow: -.2em -.2em 0 0 currentcolor;
+    }
+    75% {
+        box-shadow: 0px -.2em 0 0 currentcolor;
+    }
+    87% {
+        box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+}
+
+/* MAIN MENU */
+
+#MainMenu {
+    background: url('/src/assets/textures/important/background.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+#MainMenu .title {
+    font-size: 62px;
+}
+
+#MainMenu .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#MainMenu .button-container .main-buttons {
+    width: 256px;
+    height: 32px;
+}
+
+#MainMenu #updateText {
+    position: fixed;
+    bottom: 0;
+    margin-left: 10px;
+}
+
+
+

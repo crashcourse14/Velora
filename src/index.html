@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Velora</title>
+        <link rel="icon" href="/src/assets/textures/important/logo.png">
+        <link rel="stylesheet" href="/src/styles/styles.css">
+    </head>
+    <body>
+        <!--<button id="errorBtn" onclick="showMainMenu()">Debug Window</button>-->
+        <div class="screen active" id="loadingScreen">
+            <div class="loadScreen-LoadingContainer">
+                <span class="loader"></span>
+                <p id="loadingText">Loading...</p>
+            </div>
+        </div>
+        <div class="screen hidden" id="MainMenu">
+            <center>
+                <h1 class="title">Velora</h1>
+            </center>
+                 
+            <div class="button-container">
+                <button class="main-buttons">Create New World</button>
+                <button class="main-buttons" disabled>Multiplayer</button>
+                <button class="main-buttons">Settings</button>
+                <button class="main-buttons">Credits</button>
+            </div>
+            <span id="updateText">Fetching Update Version...</span>
+        </div>
+    </body>
+    <script src="/src/core/core.js"></script>
+    <script src="/src/core/errorCatcher.js"></script>
+    <script src="/src/core/loader.js"></script>
+    <script src="/src/main.js"></script>
+    <script src="/src/config.js"></script>
+</html>
